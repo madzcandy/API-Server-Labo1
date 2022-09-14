@@ -1,0 +1,65 @@
+const MathModel = require('../models/math');
+const Calculate = require('../models/calculate');
+const path = require('path');
+const fs = require('fs');
+module.exports =
+    class MathsController extends require('./Controller') {
+        constructor(HttpContext) {
+            super(HttpContext);
+            //this.repository = new Repository(new ContactModel());
+        }
+        get() {
+
+            if(this.HttpContext.path.queryString == '?')
+            {
+                let helpPagePath = path.join(process.cwd(), "testMathsAPI.html"/*"wwwroot/helpPages/mathsServicesHelp.html"*/);
+                let content = fs.readFileSync(helpPagePath);
+                this.HttpContext.response.content("text/html", content);
+            }
+            else
+            {
+                if(this.HttpContext.path.params.op)
+                {
+                    let result;
+                    let x = parseInt(this.HttpContext.path.params.x);
+                    let y = parseInt(this.HttpContext.path.params.y);
+                    let n = parseInt(this.HttpContext.path.params.n);
+
+                    switch(this.HttpContext.path.params.op)
+                    {
+                        case " ":
+                            result = Calculate.Addition(x,y);
+                            break;
+                        case "-":
+                            result = Calculate.Substraction(x,y);
+                            break;
+                        case "*":
+                            result = Calculate.Multiplication(x,y);
+                            break;
+                        case "/":
+                            result = Calculate.Division(x,y);
+                            break;
+                        case "%":
+                            result = Calculate.Modulo(x,y);
+                            break;
+                        case "!":
+                            result = Calculate.factorial(n);
+                            break;
+                        case "p":
+                            result = Calculate.isPrime(n);
+                            break;   
+                        case "np":
+                            result = Calculate.findPrime(n);
+                            break;   
+                    }
+
+                    this.HttpContext.path.params.value = result;
+                    this.HttpContext.response.JSON(this.HttpContext.path.params);                   
+
+                }else{
+                    this.HttpContext.path.params.error = "parameter 'op' is missing";
+                    this.HttpContext.response.JSON(this.HttpContext.path.params);
+                }
+            }
+        }
+    }

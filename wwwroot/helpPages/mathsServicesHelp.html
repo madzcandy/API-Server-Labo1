@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/mathHelp.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Service /api/maths - Documentation</h1>
+    <h2>GET: Maths endpoint</h2>
+    <h3>List of possible query strings:</h3>
+    <hr>
+    <div class="helpPage">
+        <table>
+            <tr>
+                <th class="titleTable">Function</th>
+                <th class="titleTable">Exemple</th>
+            </tr>
+            <tr>
+                <td><div class="operation">Addition</div></td>
+                <td>
+                    <div class="exemple"> 
+                        ? op <span class="accentText">+</span> & x = number & y number 
+                        <div class="returnEx">return  {"op":" ", "x":number, "y":number, '"value": x + Y} </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><div class="operation">Subtract</div></td>
+                <td>
+                    <div class="exemple"> 
+                        ? op = <span class="accentText">-</span> & x = number & y = number 
+                        <div class="returnEx">return {"op":"-", "x":number, "y":number, "value":x - y} </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><div class="operation">Multiplication</div></td>
+                <td>
+                    <div class="exemple">   
+                        ?op = <span class="accentText">*</span> & x = number & y = number 
+                        <div class="returnEx">return {"op":"*", "x":number, "y":number, "value": x * y} </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><div class="operation">Division</div></td>
+                <td>
+                    <div class="exemple">   
+                        ? op = <span class="accentText">/</span> & x = number & y = number 
+                        <div class="returnEx">return {"op":"/", "x":number, "y":number, "value": x / y} </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><div class="operation">Modulo</div></td>
+                <td>
+                    <div class="exemple">   
+                        ? op = <span class="accentText">%</span> & x = number & y = number 
+                        <div class="returnEx">return {"op":"%", "x":number, "y":number, "value": x % y}</div>
+                    </div> 
+                </td>
+            </tr>
+            <tr>
+                <td><div class="operation">Factorial</div></td>
+                <td>   
+                    <div class="exemple">   
+                        ? op = <span class="accentText">!</span> & n = integer 
+                        <div class="returnEx">return {"op":"%","n":integer, "value": n!} </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><div class="operation">Is Prime</div></td>
+                <td>
+                    <div class="exemple">   
+                        ? op <span class="accentText">p</span> & n = integer 
+                        <div class="returnEx">return {"op":"p","n":integer, "value": true if n is a prime number} </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><div class="operation">Find Prime</div></td>
+                <td>
+                    <div class="exemple">              
+                        ? op = <span class="accentText">np</span> & n = integer 
+                        <div class="returnEx">return {"op":"np","n":integer,"value": nth prime number} </div>
+                    </div>
+                </td>    
+            </tr>
+        </table>
+           
+          
+
+        
+ 
+          
+ 
+            
+
+          
+     
+
+    </div>
+
+
+</body>
+</html>
