@@ -58,7 +58,11 @@ module.exports =
                             break;   
                         case "np":
                             result = Calculate.findPrime(n);
-                            break;   
+                            break;
+                        default:
+                            Verifications.ErrorMessage("parameter 'op' is not valid", this);
+                            break;
+
                     }
 
                     this.HttpContext.path.params.value = result;
