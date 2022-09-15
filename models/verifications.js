@@ -10,7 +10,6 @@ function ErrorMessage(message, obj)
 {
     obj.HttpContext.path.params.error = message;
     obj.HttpContext.response.JSON(obj.HttpContext.path.params);
-
 }
 
 
@@ -31,7 +30,7 @@ function ValiderOperationXY(params, obj)
             valid = false;
         }
     
-        if(valid && isNaN(params.x) || isNaN(params.y))
+        if(valid && (isNaN(params.x) || isNaN(params.y)))
         {
             ErrorMessage("x and y parameters must be numbers", obj);
             valid = false;
@@ -70,6 +69,12 @@ function ValiderOperationN(params, obj)
         if(valid && isNaN(params.n))
         {
             ErrorMessage("n parameter must be a number", obj);
+            valid = false;
+        }
+
+        if(valid && params.op == "!" && params.n < 0)
+        {
+            ErrorMessage("n parameter must be positive", obj);
             valid = false;
         }
 

@@ -15,7 +15,6 @@ function Multiplication(x, y)
 
 function Division(x, y)
 {
-    /* VERIFIER =======================================*/
     if(x == 0 && y == 0)
     {
         return "NaN";

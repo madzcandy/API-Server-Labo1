@@ -67,8 +67,7 @@ module.exports =
 
                     this.HttpContext.path.params.value = result;
                     this.HttpContext.response.JSON(this.HttpContext.path.params);  
-                            
-
+                    
                 }else{
                     Verifications.ErrorMessage("parameter 'op' is missing", this);
                 }
