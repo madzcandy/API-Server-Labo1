@@ -30,22 +30,20 @@ function ValiderOperationXY(params, obj)
             ErrorMessage("y parameter is missing", obj);
             valid = false;
         }
-
-       /*
-        if(!Number.isInteger(params.x)| !Number.isInteger(params.y))
+    
+        if(valid && isNaN(params.x) || isNaN(params.y))
         {
-            ErrorMessage("n parameter must be a number", obj);
+            ErrorMessage("x and y parameters must be numbers", obj);
             valid = false;
         }
-        */
+        
 
-
-        if(Object.keys(params).length > 3)
+        if(valid && Object.keys(params).length > 3)
         {
             ErrorMessage("too many parameters", obj);
             valid = false;
         }
-        if(Object.keys(params).length < 3)
+        if(valid && Object.keys(params).length < 3)
         {
             ErrorMessage("not enough parameters", obj);
             valid = false;
@@ -69,18 +67,18 @@ function ValiderOperationN(params, obj)
             valid = false;
         }
 
-        if(params.n == NaN)
+        if(valid && isNaN(params.n))
         {
             ErrorMessage("n parameter must be a number", obj);
             valid = false;
         }
 
-        if(Object.keys(params).length > 2)
+        if(valid && Object.keys(params).length > 2)
         {
             ErrorMessage("too many parameters", obj);
             valid = false;
         }
-        else if(Object.keys(params).length < 2)
+        else if(valid && Object.keys(params).length < 2)
         {
             ErrorMessage("not enough parameters", obj);
             valid = false;
