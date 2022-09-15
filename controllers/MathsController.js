@@ -1,33 +1,41 @@
-const MathModel = require('../models/math');
 const Calculate = require('../models/calculate');
+const Verifications = require('../models/verifications');
 const path = require('path');
 const fs = require('fs');
 module.exports =
     class MathsController extends require('./Controller') {
         constructor(HttpContext) {
             super(HttpContext);
-            //this.repository = new Repository(new ContactModel());
         }
         get() {
 
             if(this.HttpContext.path.queryString == '?')
             {
-                let helpPagePath = path.join(process.cwd(), "testMathsAPI.html"/*"wwwroot/helpPages/mathsServicesHelp.html"*/);
+                let helpPagePath = path.join(process.cwd(), "wwwroot/helpPages/mathsServicesHelp.html");
                 let content = fs.readFileSync(helpPagePath);
                 this.HttpContext.response.content("text/html", content);
             }
             else
             {
-                if(this.HttpContext.path.params.op)
+                let params = this.HttpContext.path.params;
+
+                if(params.op)
                 {
                     let result;
-                    let x = parseInt(this.HttpContext.path.params.x);
-                    let y = parseInt(this.HttpContext.path.params.y);
-                    let n = parseInt(this.HttpContext.path.params.n);
+                    let x = parseInt(params.x);
+                    let y = parseInt(params.y);
+                    let n = parseInt(params.n);
+
+                    
+                    if(!Verifications.ValiderOperationXY(params, this) ||!Verifications.ValiderOperationN(params,  this))
+                    {
+                        return;
+                    }
 
                     switch(this.HttpContext.path.params.op)
                     {
-                        case " ":
+                        case " ":                     
+                            this.HttpContext.path.params.op = "+";      
                             result = Calculate.Addition(x,y);
                             break;
                         case "-":
@@ -54,11 +62,11 @@ module.exports =
                     }
 
                     this.HttpContext.path.params.value = result;
-                    this.HttpContext.response.JSON(this.HttpContext.path.params);                   
+                    this.HttpContext.response.JSON(this.HttpContext.path.params);  
+                            
 
                 }else{
-                    this.HttpContext.path.params.error = "parameter 'op' is missing";
-                    this.HttpContext.response.JSON(this.HttpContext.path.params);
+                    Verifications.ErrorMessage("parameter 'op' is missing", this);
                 }
             }
         }

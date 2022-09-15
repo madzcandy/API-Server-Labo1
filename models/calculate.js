@@ -1,8 +1,3 @@
-function Test()
-{
-    //console.log("test");
-}
-
 function Addition(x, y)
 {
     return x + y;
@@ -20,11 +15,25 @@ function Multiplication(x, y)
 
 function Division(x, y)
 {
+    /* VERIFIER =======================================*/
+    if(x == 0 && y == 0)
+    {
+        return "NaN";
+    }
+    else if(y == 0)
+    {
+        return "Infinity";
+    }
+
     return x / y;
 }
 
 function Modulo(x, y)
 {
+    if(y <= 0)
+    {
+        return "NaN";
+    }
     return x % y;
 }
 
@@ -56,4 +65,4 @@ function findPrime(n){
 }
 
 
-module.exports = { Test, Addition, Substraction, Multiplication, Division, Modulo, factorial, isPrime, findPrime};
+module.exports = { Addition, Substraction, Multiplication, Division, Modulo, factorial, isPrime, findPrime};
