@@ -36,7 +36,7 @@ function ValiderOperationXY(params, obj)
             valid = false;
         }
 
-        if(valid && (!Number.isInteger(params.x)) ||  (!Number.isInteger(params.y)))
+        if(valid && ((params.x - Math.floor(params.x) > 0) && (params.y - Math.floor(params.y) > 0)))
         {
             ErrorMessage("x and y parameters must be integers", obj);
             valid = false;
@@ -78,7 +78,7 @@ function ValiderOperationN(params, obj)
             valid = false;
         }
 
-        if(valid && (!Number.isInteger(params.n)))
+        if(valid && (params.n - Math.floor(params.n)) > 0)
         {
             ErrorMessage("n parameter must be an integer", obj);
             valid = false;
