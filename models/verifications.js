@@ -36,7 +36,7 @@ function ValiderOperationXY(params, obj)
             valid = false;
         }
 
-        if(valid && ((params.x - Math.floor(params.x) > 0) && (params.y - Math.floor(params.y) > 0)))
+        if(valid && ((params.x - Math.floor(params.x) > 0) || (params.y - Math.floor(params.y) > 0)))
         {
             ErrorMessage("x and y parameters must be integers", obj);
             valid = false;
