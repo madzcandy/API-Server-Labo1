@@ -35,6 +35,12 @@ function ValiderOperationXY(params, obj)
             ErrorMessage("x and y parameters must be numbers", obj);
             valid = false;
         }
+
+        if(valid && (!Number.isInteger(params.x)) ||  (!Number.isInteger(params.y)))
+        {
+            ErrorMessage("x and y parameters must be integers", obj);
+            valid = false;
+        }
         
 
         if(valid && Object.keys(params).length > 3)
@@ -69,6 +75,12 @@ function ValiderOperationN(params, obj)
         if(valid && isNaN(params.n))
         {
             ErrorMessage("n parameter must be a number", obj);
+            valid = false;
+        }
+
+        if(valid && (!Number.isInteger(params.n)))
+        {
+            ErrorMessage("n parameter must be an integer", obj);
             valid = false;
         }
 
